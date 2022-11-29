@@ -6,24 +6,15 @@ import com.stripbandunk.jwidget.annotation.TableColumn;
  *
  * @author Rifki Maulana
  */
+
+
 public class barang {
     
-
+    @TableColumn(number=1, name="KODE BARANG") private String kode_barang;
+    @TableColumn(number=2, name="NAMA BARANG") private String nama_barang;
+    @TableColumn(number=3, name="JUMLAH") private int jumlah;
+    @TableColumn(number=1, name="HARGA") private long harga;
     
-    private String kode_barang;
-    private String nama_barang;
-    private int jumlah;
-    private long harga;
-
-    
-        @TableColumn(number=1, name ="KODE BARANG")
-    private String kode_barang;
-    @TableColumn(number=2, name ="NAMA BARANG")
-    private String nama_barang;
-    @TableColumn(number=3, name ="JUMLAH")
-    private int jumlah;
-    @TableColumn(number=1, name ="HARGA")
-    private long harga;
     
     public String getKode_barang() {
         return kode_barang;
@@ -56,5 +47,6 @@ public class barang {
     public void setHarga(long harga) {
         this.harga = harga;
     }
-    
+
+
 }

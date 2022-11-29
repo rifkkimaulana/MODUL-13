@@ -9,6 +9,11 @@ package com.rifkkimaulana.program;
     import java.util.ArrayList;
     import java.util.List;
     
+
+    import net.sf.jasperreports.engine.*;
+    import net.sf.jasperreports.view.JasperViewer;
+    import net.sf.jasperreports.swing.*;
+
 /**
  *
  * @author Rifki Maulana
@@ -19,6 +24,9 @@ public class fasilitas {
 
     // koneksi ke database
     private Connection koneksi;
+    
+    //report path
+    private String ReportPath="report/";
     public fasilitas() {
       koneksi = KoneksiDatabase.getKoneksi();
     }
@@ -115,6 +123,7 @@ public void delete(String kode_barang){
       result = prepare.executeQuery();
  while(result.next()){
       barang barang = new barang();
+      barang.setKode_barang(result.getString("kode_barang"));
       barang.setNama_barang(result.getString("nama_barang"));
       barang.setJumlah(result.getInt("jumlah"));
       barang.setHarga(result.getLong("harga"));
@@ -148,5 +157,20 @@ public void delete(String kode_barang){
       }
     }
   }
-}
+
   
+public void viewReport(String nm_report){
+String reportSource;
+String reportDest;
+reportSource=ReportPath + "laporan/" + nm_report + ".html";
+reportDest=ReportPath +"hasil/"+ nm_report +".html";
+try{
+    JasperReport jasperReport = JasperCompileManager.compileReport(reportSource);
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null,koneksi);
+    JasperExportManager.exportReportToHtmlFile(jasperPrint, reportDest);
+    JasperViewer.viewReport(jasperPrint, false);
+} catch (JRException e){
+    e.getStackTrace();
+}
+}
+}

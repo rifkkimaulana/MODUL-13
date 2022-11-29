@@ -22,3 +22,10 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+/AplikasiInputBarang/nbproject/private/
+/DatabaseUtilities/build/
+/MODUL 13 - ProgramDAO SERI 2/build/
+/AplikasiInputBarang/build/
+/DatabaseUtilities/dist/
+/MODUL 13 - ProgramDAO SERI 2/dist/
+/AplikasiInputBarang/dist/
